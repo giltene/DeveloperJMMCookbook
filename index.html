@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>The JMM Cookbook for Java Developers</title>
+
+<meta http-equiv="content-type"
+content="text/html; charset=ISO-8859-1">
+
+<meta name="author" content="Gil Tene">
+</head>
+<body bgcolor="#ffffee">
+
+<h1>The JMM Cookbook for Java Developers</h1>
+
+by <a href="https://twitter.com/giltene">Gil Tene</a>, with help from
+a sleepless night and confusion about which day it was.
+
+<p> 
+<a href="http://g.oswego.edu/dl/jmm/cookbook.html">
+Doug Lea's JSR-133 Cookbook for Compiler Writers
+</a>
+(aka "the JMM cookbook") descibes a set of implementation rules that is
+sufficient for meeting the JMM specification. The simple ordering
+matrices described provide great guidlines that rae easy to follow and
+reason about. 
+</p>
+
+<p> 
+However, while many JVM implementations follow these cookbook rules in
+order to meet the JMM specification, it can be dangerous for Java
+developers to assume that the rules stated are guarantees, since JVM
+implementations that meetthe JMM specication but use more relaxed rules
+that stated in the JMM cookbook are possible. The barier matrices,
+as easy as they are to understand and follow, are not a reliable
+predictor of what JVMs will actually do now or in the future.
+</p>
+
+<p> 
+This leaves developers with the burden of trying to reason about their
+programs using the JMM spec itself, which proves to be a task so hard
+that is hard for the concurrency experts involved in specifying,
+implementing and testing it (as evidenced by active discussion bursts
+on various related mailing lists)..
+</p>
+
+<h3>Gil's expanded barrier table</h3>
+
+<p> 
+I've been playing with an attempt to describe the required (rather than
+just a sufficient) reordering limitations that result from the JMM spec
+in a way that can be more readily consumed by Java developers that want
+to reason about their own programs, and to understand the guarantees
+provided to them by the JMM.
+</p>
+
+<p> 
+I believe that the following matix, using Doug's convenient format,
+describes required (rather than simply sufficient) reordering rules
+between the common operations of Load, Store, Volatile Load, Volatile Store,
+Monitor Enter, and Monitor Exit.
+</p>
+
+<p>
+The matrix uses Doug's original notation for  
+<font color="red">LoadLoad</font>,
+<font color="red">LoadStore</font>,
+<font color="red">StoreStore</font> and
+<font color="red">StoreLoad</font> barriers used in the JMM cookbook's
+most commonly referred to matrix, in
+addition to his expanded use of the following:
+<font color="red">LoadExit</font>,
+<font color="red">StoreExit</font>,
+<font color="red">EnterEnter</font>,
+<font color="red">EnterExit</font>,
+<font color="red">ExitExit</font>,
+<font color="red">ExitEnter</font>,
+<font color="red">EnterLoad</font>,
+<font color="red">EnterStore</font>.
+Into that mix, We throw in the additional
+<font color="red">"VLoad"</font> and
+<font color="red">"VStore"</font>
+notation to expand the set with
+<font color="red">LoadVStore</font>,
+<font color="red">LoadVLoad</font>,
+<font color="red">StoreVStore</font>,
+<font color="red">VLoadLoad</font>,
+<font color="red">VLoadStore</font>,
+<font color="red">VLoadVLoad</font>,
+<font color="red">VLoadVStore</font>,
+<font color="red">VLoadEnter</font>,
+<font color="red">VLoadExit</font>,
+<font color="red">VStoreVLoad</font>,
+<font color="red">VStoreVStore</font>,
+<font color="red">VStoreEnter</font>,
+<font color="red">VStoreExit</font>,
+<font color="red">ExitVLoad</font>,
+<font color="red">ExitVStore</font>.
+
+
+
+<p> I believe that Fully expanding to explicitly address ordering rules for Loads, Stores, Volatile Loads, Volatile Stores, Monitor Enter and Monitor Exit disentangles to: </p>
+
+<table cellpadding="2" cellspacing="2" border="1" >
+  <tbody>
+  <tr>
+    <td><b>Required Barriers</b>
+    </td>
+    <td rowspan="1" colspan="6" align="center"><em>2nd operation</em>
+    </td>
+  </tr>
+  <tr>
+    <td><em>1st operation</em>
+    </td>
+    <td>Normal Load
+    </td>
+    <td>Normal Store
+    </td>
+    <td>Volatile Load
+    </td>
+    <td>Volatile Store
+    </td>
+    <td>MonitorEnter
+    </td>
+    <td>MonitorExit
+    </td>
+  </tr>
+  <tr>
+    <td>Normal Load
+    </td>
+    <td><br>
+    </td>
+    <td><br>
+    </td>
+    <td><br>
+    </td>
+    <td><font color="red">LoadVStore</font>
+    </td>
+    <td><br>
+    </td>
+    <td><font color="red">LoadExit</font>
+    </td>
+  </tr>
+  <tr>
+    <td>Normal Store
+    </td>
+    <td><br>
+    </td>
+    <td><br>
+    </td>
+    <td><br>
+    </td>
+    <td><font color="red">StoreVStore</font>
+    </td>
+    <td><br>
+    </td>
+    <td><font color="red">StoreExit</font>
+    </td>
+  </tr>
+  <tr>
+    <td>Volatile Load
+    </td>
+    <td><font color="red">VLoadLoad</font>
+    </td>
+    <td><font color="red">VLoadStore</font>
+    </td>
+    <td><font color="red">VLoadVLoad</font>
+    </td>
+    <td><font color="red">VLoadVStore</font>
+    </td>
+    <td><font color="red">VLoadEnter</font>
+    </td>
+    <td><font color="red">VLoadExit</font>
+    </td>
+  </tr>
+  <tr>
+    <td>Volatile Store
+    </td>
+    <td><br>
+    </td>
+    <td><br>
+    </td>
+    <td><font color="red">VStoreVLoad</font>
+    </td>
+    <td><font color="red">VStoreVStore</font>
+    </td>
+    <td><font color="red">VStoreEnter</font>
+    </td>
+    <td><font color="red">VStoreExit</font>
+    </td>
+  </tr>
+  <tr>
+    <td>MonitorEnter
+    </td>
+    <td><font color="red">EnterLoad</font>
+    </td>
+    <td><font color="red">EnterStore</font>
+    </td>
+    <td><font color="red">EnterVLoad</font>
+    </td>
+    <td><font color="red">EnterVStore</font>
+    </td>
+    <td><font color="red">EnterEnter</font>
+    </td>
+    <td><font color="red">EnterExit</font>
+    </td>
+  </tr>
+  <tr>
+    <td>MonitorExit
+    </td>
+    <td><br>
+    </td>
+    <td><br>
+    </td>
+    <td><font color="red">ExitVLoad</font>
+    </td>
+    <td><font color="red">ExitVStore</font>
+    </td>
+    <td><font color="red">ExitEnter</font>
+    </td>
+    <td><font color="red">ExitExit</font>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<p>
+</p>
+
+<p> Plus the special final-field rule requiring
+<span style="color: red; ">StoreStore</span> and
+<font color="red">StoreVStore</font> barriers in:
+<br> &nbsp; &nbsp; &nbsp;
+<tt>x.finalField = v; <span style="color: red; ">StoreStore</span>;
+sharedNonVolatileRef = x;</tt>
+<br> &nbsp; &nbsp; &nbsp;
+<tt>x.finalField = v; <font color="red">StoreVStore</font>;
+sharedVolatileRef = x;</tt>
+</p>
+
+<p> 
+To be clear about both the purpose and utility of this matrix:
+This matrix is NOT an attempt to capture a precise description of the JMM.
+Instead, it is intended to be At-least-as-strict as the JMM, such that
+developers can safely assume that all the reordering rules stated in it are
+actually followed by all JVMs that comply with the JMM. It is certainly
+possible that (and acceptable for) the JMM to be more strict than the
+rules described in the matrix. It is certainly possible for JVMs to be
+more strict.
+</p>
+
+<p>
+I *think* (hope?) that the JMM spec <td><font color="red">guarantees</font> every
+single one of the orderings in the above matrix. Since the orderings stated
+can be reasoned above in a transitive fashion, they provide a convenient recepie
+for developers to follow in determining which reorderings are impossible in their
+code.
+</p>
+
+<p>
+We now embark on trying to show how each of the above reorderings is
+guaranteed by the JMM specification:
+This excercize is left for the reader ;-).
+</p>
+
+<!-- hhmts start --> Last modified: Tue Feb 23 09:10:36 PST 2014 <!-- hhmts end -->
+
+</body>
+</html>
