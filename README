@@ -1,17 +1,18 @@
 DeveloperJMMCookbook: The JMM Cookbook for Java Developers
+See: http://giltene.github.io/DeveloperJMMCookbook/
 
 Doug Lea's JMM Cookbook ( http://g.oswego.edu/dl/jmm/cookbook.html ) is
 an amazingly useful tool for Compiler Writers, which is it's stated
-purpoose. It descibes a set of implementation rules that is sufficient
+purpose. It describes a set of implementation rules that is sufficient
 for meeting the JMM specification, and is used by most JVMs, most of
 the time.
 
-However, being a sufficient-but-not-neccesary set of rules, this 
+However, being a sufficient-but-not- necessary set of rules, this
 Compiler Writer's JMM Cookbook does not provide Java developers with
 a tool to reason about the rules that are *guaranteed* to be followed
 by any JVM compliant wth the JMM specification. This leaves developers
 with the JMM specification itself, which is unfortunately not reliably
-parseable by mortals on a daily basis. Applying JMM spec criteria to
+parse-able by mortals on a daily basis. Applying JMM spec criteria to
 code requires a level of transcendent meditation that is not only hard
 to achieve, but more importantly hard to maintain, making it impractical
 for daily reference use by programmers that want to actually construct
