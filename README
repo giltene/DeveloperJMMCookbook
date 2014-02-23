@@ -1,0 +1,37 @@
+DeveloperJMMCookbook: The JMM Cookbook for Java Developers
+
+Doug Lea's JMM Cookbook ( http://g.oswego.edu/dl/jmm/cookbook.html ) is
+an amazingly useful tool for Compiler Writers, which is it's stated
+purpoose. It descibes a set of implementation rules that is sufficient
+for meeting the JMM specification, and is used by most JVMs, most of
+the time.
+
+However, being a sufficient-but-not-neccesary set of rules, this 
+Compiler Writer's JMM Cookbook does not provide Java developers with
+a tool to reason about the rules that are *guaranteed* to be followed
+by any JVM compliant wth the JMM specification. This leaves developers
+with the JMM specification itself, which is unfortunately not reliably
+parseable by mortals on a daily basis. Applying JMM spec criteria to
+code requires a level of transcendent meditation that is not only hard
+to achieve, but more importantly hard to maintain, making it impractical
+for daily reference use by programmers that want to actually construct
+"safe" code. This is most easily evidenced by the occasional storms
+of e-mails and obvious misunderstandings among people who actually spend
+much of their time specifying, implementing, and testing memory models.
+
+I've been playing with an attempt to describe as set of required (rather
+than sufficient) reordering limitations that result from the JMM spec
+in a way that can be more readily consumed by Java developers that want
+to reason about their own programs, and to understand the guarantees
+provided to them by the JMM.
+
+I call this attempt "The JMM Cookbook for Java Developers". It is not
+yet something that anyone should rely on, as the requirements stated in
+the current draft form have not yet been proven to be required by the
+JMM spec. But I'm hoping to have those actually proven (or adjusted to
+ones that can be proven) in order to have an easily consumable expected
+reordering rule set.
+
+-- Gil Tene. 
+Feb 23, 2014.
+
