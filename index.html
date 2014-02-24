@@ -263,20 +263,20 @@ code.
 <p>
     Staring on that exercise though, much of the matrix can simply be attributed to this single
     statement in the JMM specification
-    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.4">(§17.4.4)</a>:
+    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.4">(17.4.4)</a>:
     <br>
     <span style="font-family: courier new; font-size:14px;">"Every execution has a synchronization order.
     A synchronization order is a total order over all of the synchronization actions of an
     execution. For each thread t, the synchronization order of the synchronization actions
-    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.2">(§17.4.2)</a>
+    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.2">(17.4.2)</a>
     in t is consistent with the program order
-    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.3">(§17.4.3)</a>
+    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.3">(17.4.3)</a>
     of t."</span>
     <br>
     To my current understanding, this single statement, on it's own, covers the bottom right 4x4 part
     of the matrix, requiring each of the barriers stated between any combination of a Volatile Load,
     Volatile Store, Monitor Enter, and Monitor Exit (all of which are synchronization actions per
-    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.2">(§17.4.2)</a>).
+    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.2">(17.4.2)</a>).
 </p>
  <p>
     This leaves us with only 8 other barriers to prove.
