@@ -19,28 +19,41 @@ a sleepless night and confusion about which day it was.
 <a href="http://g.oswego.edu/dl/jmm/cookbook.html">
 Doug Lea's JSR-133 Cookbook for Compiler Writers
 </a>
-(aka "the JMM cookbook") descibes a set of implementation rules that is
-sufficient for meeting the JMM specification. The simple ordering
-matrices described provide great guidlines that rae easy to follow and
-reason about. 
+    (aka "the JMM cookbook") describes a set of implementation rules that is
+    sufficient for meeting the JMM specification. The cookbook is an amazingly
+    useful tool for Compiler Writers and JVM implementers, which is it's stated
+    purpose. It describes a set of implementation rules that is sufficient
+    for meeting the JMM specification, and is used by most JVMs, most of
+    the time. The simple ordering matrices described provide great guidelines that
+    are easy to follow and reason about.
 </p>
-
-<p> 
-However, while many JVM implementations follow these cookbook rules in
-order to meet the JMM specification, it can be dangerous for Java
-developers to assume that the rules stated are guarantees, since JVM
-implementations that meet the JMM specification but use more relaxed rules
-that stated in the JMM cookbook are possible. The barrier matrices,
-as easy as they are to understand and follow, are not a reliable
-predictor of what JVMs will actually do now or in the future.
+<p>
+    However, being a sufficient-but-not-necessary set of rules, this
+    Compiler Writer's JMM Cookbook does not provide Java developers with
+    a tool to reason about the rules that are *guaranteed* to be followed
+    by any JVM compliant with the JMM specification.
+    While many JVM implementations follow these cookbook rules in
+    order to meet the JMM specification, it can be dangerous for Java
+    developers to assume that the rules stated are guarantees, a JVM
+    implementations that meet the JMM specification but use more relaxed rules
+    that stated in the JMM cookbook are certainly possible. The barrier
+    matrices in the cookbook, as easy as they are to understand and follow,
+    are not a reliable predictor of what JVMs will actually do now or in
+    the future.
 </p>
-
-<p> 
-This leaves developers with the burden of trying to reason about their
-programs using the JMM spec itself, which proves to be a task so hard
-that is hard for the concurrency experts involved in specifying,
-implementing and testing it (as evidenced by active discussion bursts
-on various related mailing lists)..
+<p>
+    This leaves Java developers with the JMM specification itself, which is
+    unfortunately not reliably parse-able by mortals on a daily basis.
+    Applying JMM spec criteria to code requires a level of transcendent
+    meditation that is not only hard to achieve, but more importantly hard
+    to maintain, making it impractical for daily reference use by programmers
+    that want to actually construct "safe" code. This is most easily
+    evidenced by the occasional storms of e-mails and mailing list
+    disagreements among people who actually spend much of their time
+    specifying, implementing, and testing memory models.
+</p>
+<p>
+    So What's a Java developer to do?
 </p>
 
 <h3>Gil's expanded barrier table</h3>
