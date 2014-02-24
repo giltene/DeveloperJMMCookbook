@@ -8,7 +8,7 @@ content="text/html; charset=ISO-8859-1">
 
 <meta name="author" content="Gil Tene">
 </head>
-<body bgcolor="#ffffee">
+<body style="background-color: #ffffee;">
 
 <h1>The JMM Cookbook for Java Developers</h1>
 
@@ -29,8 +29,8 @@ reason about.
 However, while many JVM implementations follow these cookbook rules in
 order to meet the JMM specification, it can be dangerous for Java
 developers to assume that the rules stated are guarantees, since JVM
-implementations that meetthe JMM specication but use more relaxed rules
-that stated in the JMM cookbook are possible. The barier matrices,
+implementations that meet the JMM specification but use more relaxed rules
+that stated in the JMM cookbook are possible. The barrier matrices,
 as easy as they are to understand and follow, are not a reliable
 predictor of what JVMs will actually do now or in the future.
 </p>
@@ -62,39 +62,39 @@ Monitor Enter, and Monitor Exit.
 
 <p>
 The matrix uses Doug's original notation for  
-<font color="red">LoadLoad</font>,
-<font color="red">LoadStore</font>,
-<font color="red">StoreStore</font> and
-<font color="red">StoreLoad</font> barriers used in the JMM cookbook's
+<span style="color: red; ">LoadLoad</span>,
+<span style="color: red; ">LoadStore</span>,
+<span style="color: red; ">StoreStore</span> and
+<span style="color: red; ">StoreLoad</span> barriers used in the JMM cookbook's
 most commonly referred to matrix, in
 addition to his expanded use of the following:
-<font color="red">LoadExit</font>,
-<font color="red">StoreExit</font>,
-<font color="red">EnterEnter</font>,
-<font color="red">EnterExit</font>,
-<font color="red">ExitExit</font>,
-<font color="red">ExitEnter</font>,
-<font color="red">EnterLoad</font>,
-<font color="red">EnterStore</font>.
+<span style="color: red; ">LoadExit</span>,
+<span style="color: red; ">StoreExit</span>,
+<span style="color: red; ">EnterEnter</span>,
+<span style="color: red; ">EnterExit</span>,
+<span style="color: red; ">ExitExit</span>,
+<span style="color: red; ">ExitEnter</span>,
+<span style="color: red; ">EnterLoad</span>,
+<span style="color: red; ">EnterStore</span>.
 Into that mix, We throw in the additional
-<font color="red">"VLoad"</font> and
-<font color="red">"VStore"</font>
+<span style="color: red; ">"VLoad"</span> and
+<span style="color: red; ">"VStore"</span>
 notation to expand the set with
-<font color="red">LoadVStore</font>,
-<font color="red">LoadVLoad</font>,
-<font color="red">StoreVStore</font>,
-<font color="red">VLoadLoad</font>,
-<font color="red">VLoadStore</font>,
-<font color="red">VLoadVLoad</font>,
-<font color="red">VLoadVStore</font>,
-<font color="red">VLoadEnter</font>,
-<font color="red">VLoadExit</font>,
-<font color="red">VStoreVLoad</font>,
-<font color="red">VStoreVStore</font>,
-<font color="red">VStoreEnter</font>,
-<font color="red">VStoreExit</font>,
-<font color="red">ExitVLoad</font>,
-<font color="red">ExitVStore</font>.
+<span style="color: red; ">LoadVStore</span>,
+<span style="color: red; ">LoadVLoad</span>,
+<span style="color: red; ">StoreVStore</span>,
+<span style="color: red; ">VLoadLoad</span>,
+<span style="color: red; ">VLoadStore</span>,
+<span style="color: red; ">VLoadVLoad</span>,
+<span style="color: red; ">VLoadVStore</span>,
+<span style="color: red; ">VLoadEnter</span>,
+<span style="color: red; ">VLoadExit</span>,
+<span style="color: red; ">VStoreVLoad</span>,
+<span style="color: red; ">VStoreVStore</span>,
+<span style="color: red; ">VStoreEnter</span>,
+<span style="color: red; ">VStoreExit</span>,
+<span style="color: red; ">ExitVLoad</span>,
+<span style="color: red; ">ExitVStore</span>.
 
 
 
@@ -133,11 +133,11 @@ notation to expand the set with
     </td>
     <td><br>
     </td>
-    <td><font color="red">LoadVStore</font>
+    <td><span style="color: red; ">LoadVStore</span>
     </td>
     <td><br>
     </td>
-    <td><font color="red">LoadExit</font>
+    <td><span style="color: red; ">LoadExit</span>
     </td>
   </tr>
   <tr>
@@ -149,27 +149,27 @@ notation to expand the set with
     </td>
     <td><br>
     </td>
-    <td><font color="red">StoreVStore</font>
+    <td><span style="color: red; ">StoreVStore</span>
     </td>
     <td><br>
     </td>
-    <td><font color="red">StoreExit</font>
+    <td><span style="color: red; ">StoreExit</span>
     </td>
   </tr>
   <tr>
     <td>Volatile Load
     </td>
-    <td><font color="red">VLoadLoad</font>
+    <td><span style="color: red; ">VLoadLoad</span>
     </td>
-    <td><font color="red">VLoadStore</font>
+    <td><span style="color: red; ">VLoadStore</span>
     </td>
-    <td><font color="red">VLoadVLoad</font>
+    <td><span style="color: red; ">VLoadVLoad</span>
     </td>
-    <td><font color="red">VLoadVStore</font>
+    <td><span style="color: red; ">VLoadVStore</span>
     </td>
-    <td><font color="red">VLoadEnter</font>
+    <td><span style="color: red; ">VLoadEnter</span>
     </td>
-    <td><font color="red">VLoadExit</font>
+    <td><span style="color: red; ">VLoadExit</span>
     </td>
   </tr>
   <tr>
@@ -179,29 +179,29 @@ notation to expand the set with
     </td>
     <td><br>
     </td>
-    <td><font color="red">VStoreVLoad</font>
+    <td><span style="color: red; ">VStoreVLoad</span>
     </td>
-    <td><font color="red">VStoreVStore</font>
+    <td><span style="color: red; ">VStoreVStore</span>
     </td>
-    <td><font color="red">VStoreEnter</font>
+    <td><span style="color: red; ">VStoreEnter</span>
     </td>
-    <td><font color="red">VStoreExit</font>
+    <td><span style="color: red; ">VStoreExit</span>
     </td>
   </tr>
   <tr>
     <td>MonitorEnter
     </td>
-    <td><font color="red">EnterLoad</font>
+    <td><span style="color: red; ">EnterLoad</span>
     </td>
-    <td><font color="red">EnterStore</font>
+    <td><span style="color: red; ">EnterStore</span>
     </td>
-    <td><font color="red">EnterVLoad</font>
+    <td><span style="color: red; ">EnterVLoad</span>
     </td>
-    <td><font color="red">EnterVStore</font>
+    <td><span style="color: red; ">EnterVStore</span>
     </td>
-    <td><font color="red">EnterEnter</font>
+    <td><span style="color: red; ">EnterEnter</span>
     </td>
-    <td><font color="red">EnterExit</font>
+    <td><span style="color: red; ">EnterExit</span>
     </td>
   </tr>
   <tr>
@@ -211,13 +211,13 @@ notation to expand the set with
     </td>
     <td><br>
     </td>
-    <td><font color="red">ExitVLoad</font>
+    <td><span style="color: red; ">ExitVLoad</span>
     </td>
-    <td><font color="red">ExitVStore</font>
+    <td><span style="color: red; ">ExitVStore</span>
     </td>
-    <td><font color="red">ExitEnter</font>
+    <td><span style="color: red; ">ExitEnter</span>
     </td>
-    <td><font color="red">ExitExit</font>
+    <td><span style="color: red; ">ExitExit</span>
     </td>
   </tr>
   </tbody>
@@ -232,7 +232,7 @@ notation to expand the set with
 <tt>x.finalField = v; <span style="color: red; ">StoreStore</span>;
 sharedNonVolatileRef = x;</tt>
 <br> &nbsp; &nbsp; &nbsp;
-<tt>x.finalField = v; <font color="red">StoreVStore</font>;
+<tt>x.finalField = v; <span style="color: red; ">StoreVStore</span>;
 sharedVolatileRef = x;</tt>
 </p>
 
@@ -248,7 +248,7 @@ more strict.
 </p>
 
 <p>
-I *think* (hope?) that the JMM spec <td><font color="red">guarantees</font> every
+I *think* (hope?) that the JMM spec <td><span style="color: red; ">guarantees</span> every
 single one of the orderings in the above matrix. Since the orderings stated
 can be reasoned above in a transitive fashion, they provide a convenient recepie
 for developers to follow in determining which reorderings are impossible in their
@@ -256,9 +256,30 @@ code.
 </p>
 
 <p>
-We now embark on trying to show how each of the above reorderings is
-guaranteed by the JMM specification:
-This excercize is left for the reader ;-).
+    We now embark on trying to show how each of the above reorderings is
+    guaranteed by the JMM specification: This exercise is left for the reader ;-).
+</p>
+
+<p>
+    Staring on that exercise though, much of the matrix can simply be attributed to this single
+    statement in the JMM specification
+    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.4">(§17.4.4)</a>:
+    <br>
+    <span style="font-family: courier new; font-size:14px;">"Every execution has a synchronization order.
+    A synchronization order is a total order over all of the synchronization actions of an
+    execution. For each thread t, the synchronization order of the synchronization actions
+    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.2">(§17.4.2)</a>
+    in t is consistent with the program order
+    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.3">(§17.4.3)</a>
+    of t."</span>
+    <br>
+    To my current understanding, this single statement, on it's own, covers the bottom right 4x4 part
+    of the matrix, requiring each of the barriers stated between any combination of a Volatile Load,
+    Volatile Store, Monitor Enter, and Monitor Exit (all of which are synchronization actions per
+    <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.2">(§17.4.2)</a>).
+</p>
+ <p>
+    This leaves us with only 8 other barriers to prove.
 </p>
 
 <!-- hhmts start --> Last modified: Tue Feb 23 09:10:36 PST 2014 <!-- hhmts end -->
