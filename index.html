@@ -249,23 +249,25 @@ sharedNonVolatileRef = x;</tt>
 sharedVolatileRef = x;</tt>
 </p>
 
-<p> 
-To be clear about both the purpose and utility of this matrix:
-This matrix is NOT an attempt to capture a precise description of the JMM.
-Instead, it is intended to be At-least-as-strict as the JMM, such that
-developers can safely assume that all the reordering rules stated in it are
-actually followed by all JVMs that comply with the JMM. It is certainly
-possible that (and acceptable for) the JMM to be more strict than the
-rules described in the matrix. It is certainly possible for JVMs to be
-more strict.
+<p>
+    To be clear about both the purpose and utility of this matrix:
+    This matrix is NOT an attempt to capture a precise description of the JMM.
+    Instead, it is intended to be less-or-equal to the JMM in strictness, with
+    every single barrier in the matrix being absolutely required by the JMM,
+    but with some JMM rules not necessarily being captured.
+    If the matrix achieves this goal, developers can safely assume that all
+    the reordering rules stated in it are actually followed by all JVMs that
+    comply with the JMM. It is certainly possible that (and acceptable for)
+    the JMM to be more strict than the rules described in the matrix. It is
+    certainly possible for JVMs to be more strict.
 </p>
 
 <p>
-I *think* (hope?) that the JMM spec <td><span style="color: red; ">guarantees</span> every
-single one of the orderings in the above matrix. Since the orderings stated
-can be reasoned above in a transitive fashion, they provide a convenient recepie
-for developers to follow in determining which reorderings are impossible in their
-code.
+    I *think* (hope?) that the JMM spec <td><span style="color: red; ">guarantees</span>
+    every single one of the orderings in the above matrix. Since the orderings
+    stated can be reasoned above in a transitive fashion, they provide a convenient
+    recipe for developers to follow in determining which reorderings are impossible
+    in their code.
 </p>
 
 <p>
