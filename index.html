@@ -263,7 +263,7 @@ sharedVolatileRef = x;</tt>
 </p>
 
 <p>
-    I *think* (hope?) that the JMM spec <td><span style="color: red; ">guarantees</span>
+    I hold some *hope* that the JMM spec <td><span style="color: red; ">guarantees</span>
     every single one of the orderings in the above matrix. Since the orderings
     stated can be reasoned above in a transitive fashion, they provide a convenient
     recipe for developers to follow in determining which reorderings are impossible
@@ -294,7 +294,8 @@ sharedVolatileRef = x;</tt>
     <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.2">(17.4.2)</a>).
 </p>
  <p>
-    This leaves us with only 8 other barriers to prove.
+    This leaves us with only 8 other barriers to prove. I worry that they may require adding "specific
+     variable" statements to be actually required...
 </p>
 
 <!-- hhmts start --> Last modified: Tue Feb 23 09:10:36 PST 2014 <!-- hhmts end -->
