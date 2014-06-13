@@ -14,7 +14,7 @@ content="text/html; charset=ISO-8859-1">
 
 by <a href="https://twitter.com/giltene">Gil Tene</a>, with help from
 a sleepless night and confusion about which day it was.
-
+<p><b>Note: This cookbook is not currently known to be correct. It is a hopeful draft. Treat it as such.</b></p>
 <p> 
 <a href="http://g.oswego.edu/dl/jmm/cookbook.html">
 Doug Lea's JSR-133 Cookbook for Compiler Writers
@@ -263,7 +263,7 @@ sharedVolatileRef = x;</tt>
 </p>
 
 <p>
-    I hold some *hope* that the JMM spec <td><span style="color: red; ">guarantees</span>
+    I hold some *hope* that either the current or a future JMM spec <td><span style="color: red; ">guarantees</span>
     every single one of the orderings in the above matrix. Since the orderings
     stated can be reasoned above in a transitive fashion, they provide a convenient
     recipe for developers to follow in determining which reorderings are impossible
@@ -276,7 +276,7 @@ sharedVolatileRef = x;</tt>
 </p>
 
 <p>
-    Staring on that exercise though, much of the matrix can simply be attributed to this single
+    Starting on that exercise though, much of the matrix can simply be attributed to this single
     statement in the JMM specification
     <a href="http://docs.oracle.com/javase/specs/jls/se7/html/jls-17.html#jls-17.4.4">(17.4.4)</a>:
     <br>
